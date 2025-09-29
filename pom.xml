@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.chataak.testing</groupId>
-  <artifactId>MaterialManagementProjectWebAutomation</artifactId>
+  <artifactId>OrangeHrmproject</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -33,8 +33,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version> <!-- Make sure you're using at least version 3.8.1 -->
         <configuration>
-          <source>11</source>  <!-- Set the source to Java 8 or a later version -->
-          <target>11</target>  <!-- Set the target to Java 8 or a later version -->
+          <source>15</source>  <!-- Set the source to Java 8 or a later version -->
+          <target>15</target>  <!-- Set the target to Java 8 or a later version -->
         </configuration>
       </plugin>
     </plugins>
@@ -44,6 +44,12 @@
 
 
   <dependencies>
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.2.11</version>
+      </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency>

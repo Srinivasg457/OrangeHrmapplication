@@ -19,11 +19,6 @@ public class WaitHelper {
         this.driver = driver;
     }
 
- // for the normal @finby or other normal xpath
-    public void WaitForElement(WebElement element, long timeOutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
 
 // for the config.properties file reader wait
     public WebElement WaitForElement1(By locator, long timeOutInSeconds) {
@@ -32,22 +27,4 @@ public class WaitHelper {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-
-    //for the excel sheet xpath
-    public WebElement WaitForElement2(WebElement element, int timeOutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
-        return wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-
-    //for the Displaying the card details wait
-    public WebElement WaitForElement3(By locator, int timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public List<WebElement> waitForElements(By locator, int timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-    }
 }
