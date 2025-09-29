@@ -13,7 +13,7 @@ Feature: Material Management Customer Module
     And the user Enters The Password "admin123"
     Then the user Clicks The Login Button
      Then The User Click on The PIm Side Menu
-#     And Add The Employees to The List
+     And Add The Employees to The List
     Then move to employee List and find The Added Employees
      And Move to The DashBoard Side Menu
      And Finally Logout from The orangeHrm Application

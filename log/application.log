@@ -510,3 +510,14 @@
 2025-09-30 00:47:20,129 [main] INFO OrangeHRM Application - *** Find The 4 Employees ***
 2025-09-30 00:47:23,789 [main] INFO OrangeHRM Application - *** Moving to The DashBoard Page ***
 2025-09-30 00:47:24,457 [main] INFO OrangeHRM Application - *** Click The profile dropdown &Click The logout Button Button ***
+2025-09-30 01:08:57,434 [main] INFO OrangeHRM Application - ************* Launching CHROME Browser *****************
+2025-09-30 01:08:58,581 [main] INFO OrangeHRM Application - ************* Browser Launched and Maximized *****************
+2025-09-30 01:08:58,730 [main] INFO OrangeHRM Application - *** launch The Browser ***
+2025-09-30 01:08:58,734 [main] INFO OrangeHRM Application - *** launch The app URL***
+2025-09-30 01:09:06,272 [main] INFO OrangeHRM Application - *** Enter The User Name of The Orange HRM Portal***
+2025-09-30 01:09:07,555 [main] INFO OrangeHRM Application - *** Enter The password  of The Orange HRM Portal***
+2025-09-30 01:09:07,696 [main] INFO OrangeHRM Application - *** Click The Login Button ***
+2025-09-30 01:09:09,271 [main] INFO OrangeHRM Application - *** click the PIM side menu ***
+2025-09-30 01:09:11,374 [main] INFO OrangeHRM Application - *** Find The 4 Employees ***
+2025-09-30 01:09:15,226 [main] INFO OrangeHRM Application - *** Moving to The DashBoard Page ***
+2025-09-30 01:09:15,924 [main] INFO OrangeHRM Application - *** Click The profile dropdown &Click The logout Button Button ***
