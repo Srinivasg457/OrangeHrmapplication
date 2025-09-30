@@ -97,13 +97,13 @@ public class OrangeHrmWebApphooks extends BaseClass {
         } catch (Exception e) {
             System.out.println("Failed to capture screenshot: " + e.getMessage());
         }
-//        finally {
-//            if (driver != null) {
-//                logger.info("************* Quitting Browser *****************");
-//                driver.quit(); // This closes all windows and ends the WebDriver session
-//                logger.info("************* Browser Closed Successfully *****************");
-//            }
-//        }
+        finally {
+            if (driver != null) {
+                logger.info("************* Quitting Browser *****************");
+                driver.quit(); // This closes all windows and ends the WebDriver session
+                logger.info("************* Browser Closed Successfully *****************");
+            }
+        }
     }
 
 

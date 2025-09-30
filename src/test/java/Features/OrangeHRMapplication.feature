@@ -7,7 +7,7 @@ Feature: Material Management Customer Module
 
 
 
-   @smoke
+
   Scenario: Automating orange HRM And Performing The Operations
     When the user enters User Name "Admin"
     And the user Enters The Password "admin123"
@@ -18,6 +18,11 @@ Feature: Material Management Customer Module
      And Move to The DashBoard Side Menu
      And Finally Logout from The orangeHrm Application
 
+  Scenario:Login Functionality for OrangeHrm Portal
+    When the user enters User Name "Admin"
+    And the user Enters The Password "admin123"
+    Then the user Clicks The Login Button
+    Then Verify The Loggedin  Page Url
 
 
 

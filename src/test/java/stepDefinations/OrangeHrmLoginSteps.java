@@ -42,6 +42,11 @@ public class OrangeHrmLoginSteps extends BaseClass {
         ohrmLP.orangeHrmLoginButton();
     }
 
+    @Then("Verify The Loggedin  Page Url")
+    public void verify_the_loggedin_page_url() {
+        logger.info("*** Logged In Page Validation ***");
+        ohrmLP.loggedInvalidation();
+    }
 
 
 

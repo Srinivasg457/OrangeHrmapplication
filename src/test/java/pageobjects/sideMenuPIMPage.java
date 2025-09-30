@@ -68,7 +68,8 @@ public class sideMenuPIMPage extends BaseClass {
 
 
     By employee1=By.xpath(configprop.getProperty("employee1"));
-
+    By employee2=By.xpath(configprop.getProperty("employee2"));
+    By employee3=By.xpath(configprop.getProperty("employee3"));
     By tableload=By.xpath(configprop.getProperty("tableload"));
 
     //Actions Method
@@ -145,64 +146,75 @@ public class sideMenuPIMPage extends BaseClass {
 
     }
 
-
-
-    public void employeeList( ) {
-
+    public void employeeList() {
         try {
             WebElement employeeListtab = waithelper.WaitForElement1(tabEmployeeList, 10);
             employeeListtab.click();
 
-             WebElement tbload=waithelper.WaitForElement1(tableload,20);
-             if(tbload.isDisplayed()){
-                 System.out.println("The Emploayees Data Loaded Successfully");
-             }
+            WebElement tbload = waithelper.WaitForElement1(tableload, 20);
+            if (tbload.isDisplayed()) {
+                System.out.println("The Employees Data Loaded Successfully");
+            }
+
+            Thread.sleep(3000); // using this only for recording The Video Thats It
             WebElement pageBottom = waithelper.WaitForElement1(footertext, 10);
 
             JavascriptExecutor js = (JavascriptExecutor) ldriver;
-//            // Smooth scroll to element
-//            WebElement emp1 = waithelper.WaitForElement1(employee1, 10);
             js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'end'});", pageBottom);
 
-              WebElement emp1 = waithelper.WaitForElement1(employee1, 10);
-            // Print the header in tabular format
+            // Get all three employee elements
+            WebElement emp1 = waithelper.WaitForElement1(employee1, 10);
+            WebElement emp2 = waithelper.WaitForElement1(employee2, 10);
+            WebElement emp3 = waithelper.WaitForElement1(employee3, 10);
+
+            // Store all employees in a list for easier processing
+            List<WebElement> employees = Arrays.asList(emp1, emp2, emp3);
+            List<String> employeeTexts = Arrays.asList(emp1.getText(), emp2.getText(), emp3.getText());
+
+            // Print the header
+            System.out.println("\n" + "=".repeat(60));
             System.out.format("%-10s %-25s %-15s%n", "ID", "First (& Middle) Name", "Last Name");
-            // Print the raw data to debug
-            String empDetails = emp1.getText();
-            System.out.println("Employee Details Raw Text: " + empDetails);
+            System.out.println("=".repeat(60));
 
-// Clean up and split by multiple spaces
-            String[] empInfo = empDetails.trim().split("\\s+");  // Split on one or more spaces
+            // Process and print each employee
+            for (int i = 0; i < employeeTexts.size(); i++) {
+                String empDetails = employeeTexts.get(i);
+                System.out.println("Employee " + (i + 1) + " Raw Text: " + empDetails);
 
-// Print the split result to see how the array looks
-            System.out.println("Split Employee Info: " + Arrays.toString(empInfo));
+                // Clean up and split by multiple spaces
+                String[] empInfo = empDetails.trim().split("\\s+");
+                System.out.println("Split Employee Info: " + Arrays.toString(empInfo));
 
-            if (empInfo.length >= 3) {
-                String empId = empInfo[0];
-                String firstName = empInfo[1];  // Assuming only one first name
-                String lastName = empInfo[empInfo.length - 1];  // Last name
+                if (empInfo.length >= 3) {
+                    String empId = empInfo[0];
+                    String firstName = empInfo[1];
+                    String lastName = empInfo[empInfo.length - 1];
 
-                // If there are more than two names (middle name)
-                if (empInfo.length > 3) {
-                    firstName += " " + empInfo[2];  // Add middle name if exists
+                    // Handle middle names if present
+                    if (empInfo.length > 3) {
+                        // Combine all names between first and last as middle names
+                        StringBuilder fullFirstName = new StringBuilder(firstName);
+                        for (int j = 2; j < empInfo.length - 1; j++) {
+                            fullFirstName.append(" ").append(empInfo[j]);
+                        }
+                        firstName = fullFirstName.toString();
+                    }
+
+                    // Print in tabular format
+                    System.out.format("%-10s %-25s %-15s%n", empId, firstName, lastName);
+                } else {
+                    System.out.println("Error: Employee " + (i + 1) + " details are not in the expected format.");
                 }
-
-                // Print in tabular format
-                System.out.format("%-10s %-25s %-15s%n", empId, firstName, lastName);
-            } else {
-                System.out.println("Error: Employee details are not in the expected format.");
+                System.out.println("-".repeat(60));
             }
-            System.out.println("✓ Successfully scrolled to 'OrangeHRM OS 5.7' element directly");
-//            System.out.format("%-10s %-20s %-15s%n", "ID", "  First (& Middle) Name  ", "  Last Name  ");
-//               System.out.println(emp1.getText()+" Found employee 1 ");
-//          //  js.executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
-//            System.out.println("✓ Successfully scrolled to 'OrangeHRM OS 5.7' element directly");
 
+            System.out.println("✓ Successfully displayed all 3 employees");
+            System.out.println("✓ Successfully scrolled to 'OrangeHRM OS 5.7' element directly");
 
         } catch (Exception e) {
             System.out.println("Unexpected error: " + e.getMessage());
+            e.printStackTrace();
         }
-
     }
 
 }

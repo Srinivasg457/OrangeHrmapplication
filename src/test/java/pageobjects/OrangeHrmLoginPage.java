@@ -53,8 +53,9 @@ public class OrangeHrmLoginPage extends BaseClass {
     By txt_orangehrmPassword=By.xpath(configprop.getProperty("orangehrmPassword"));
     By btn_Login=By.xpath(configprop.getProperty("btnLogin"));
 
+    By DashBoardSideMenu=By.xpath((configprop.getProperty("DashBoardSideMenu")));
 
-
+    By titleName=By.xpath((configprop.getProperty("titleName")));
     public void OrangeHrmUserName(String UserName) {
 
         try {
@@ -101,6 +102,48 @@ public class OrangeHrmLoginPage extends BaseClass {
         }
 
 
+    }
+
+
+    public void loggedInvalidation() {
+        try {
+            // 1. Use more descriptive variable names
+            WebElement dashboardMenu = waithelper.WaitForElement1(DashBoardSideMenu, 30);
+
+            if (dashboardMenu.isDisplayed() && dashboardMenu.isEnabled()) {
+                System.out.println("Dashboard Side Menu displayed successfully");
+
+                // 2. Add explicit wait before click to ensure element is clickable
+                dashboardMenu.click();
+
+                // 3. Verify navigation occurred
+                WebElement pageTitle = waithelper.WaitForElement1(titleName, 30);
+
+                if (pageTitle.isDisplayed()) {
+                    System.out.println("Page title displayed after navigation");
+
+                    // 4. Add URL validation
+                    String pageUrl = ldriver.getCurrentUrl();
+                    String expectedUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
+                    System.out.println("Current page URL: " + pageUrl);
+
+                    // 5. Fixed URL assertion syntax
+                    if (pageUrl.equals(expectedUrl)) {
+                        System.out.println("Success: Login Successful - Navigated to: " + pageUrl);
+                    } else {
+                        System.err.println("Login Failed - Expected: " + expectedUrl + " but got: " + pageUrl);
+                    }
+
+                } else {
+                    System.err.println("ERROR: Page title not displayed after menu click");
+                    // Consider throwing exception or failing test here
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Unexpected error in loggedInvalidation: " + e.getMessage());
+            e.printStackTrace(); // Add stack trace for better debugging
+        }
     }
 
 }
